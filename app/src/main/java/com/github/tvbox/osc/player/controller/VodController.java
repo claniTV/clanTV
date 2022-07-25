@@ -37,7 +37,6 @@ import xyz.doikki.videoplayer.util.PlayerUtils;
 
 import static xyz.doikki.videoplayer.util.PlayerUtils.stringForTime;
 
-//视频播放页面控件
 public class VodController extends BaseController {
     public VodController(@NonNull @NotNull Context context) {
         super(context);
@@ -55,6 +54,7 @@ public class VodController extends BaseController {
                     }
                     case 1002: { // 显示底部菜单
                         mBottomRoot.setVisibility(VISIBLE);
+                        mBottomRoot.requestFocus();
                         break;
                     }
                     case 1003: { // 隐藏底部菜单
@@ -284,7 +284,6 @@ public class VodController extends BaseController {
                 }
             }
         });
-//        增加播放页面片头片尾时间重置
         findViewById(R.id.play_time_reset).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -305,7 +304,6 @@ public class VodController extends BaseController {
                     int step = Hawk.get(HawkConfig.PLAY_TIME_STEP, 5);
                     int st = mPlayerConfig.getInt("st");
                     st += step;
-                    //片头最大跳过时间10分钟
                     if (st > 60 * 10)
                         st = 0;
                     mPlayerConfig.put("st", st);
@@ -323,7 +321,6 @@ public class VodController extends BaseController {
                     int step = Hawk.get(HawkConfig.PLAY_TIME_STEP, 5);
                     int et = mPlayerConfig.getInt("et");
                     et += step;
-                    //片尾最大跳过时间10分钟
                     if (et > 60 * 10)
                         et = 0;
                     mPlayerConfig.put("et", et);
@@ -565,6 +562,7 @@ public class VodController extends BaseController {
             } else if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
                 if (!isBottomVisible()) {
                     showBottom();
+                    return true;
                 }
             }
         } else if (action == KeyEvent.ACTION_UP) {
