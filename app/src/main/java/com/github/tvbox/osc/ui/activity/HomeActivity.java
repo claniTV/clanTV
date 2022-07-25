@@ -236,7 +236,7 @@ public class HomeActivity extends BaseActivity {
                             @Override
                             public void run() {
                                 if (!useCacheConfig)
-                                    Toast.makeText(HomeActivity.this, "*^_^*", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(HomeActivity.this, "(≡^ܫ^≡)", Toast.LENGTH_SHORT).show();
                                 initData();
                             }
                         }, 50);
